@@ -15,6 +15,9 @@
       https://api.nuget.org/v3/index.json;
       $(RestoreSources)
     </RestoreSources>
+    <PackagesDir>$(DotNetRestorePackagesPath)</PackagesDir>
+    <PackagesDir Condition="'$(PackagesDir)'==''">$(ProjectDir)packages/</PackagesDir>
+    <ToolsDir Condition="'$(ToolsDir)'==''">$(ProjectDir)Tools/</ToolsDir>
   </PropertyGroup>
 
   <!-- Use Roslyn Compilers to build -->
