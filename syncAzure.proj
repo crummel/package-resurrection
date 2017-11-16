@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="dir.props" />
+
+  <Import Project="$(ToolsDir)SyncCloudContent.targets" />
+  
+  <UsingTask TaskName="ListAzureBlobs" AssemblyFile="$(BuildToolsTaskDir)Microsoft.DotNet.Build.CloudTestTasks.dll"/>
+
+  <Target Name="Build" DependsOnTargets="DownloadLowerLower;DownloadLowerUpper;DownloadUpperLower;DownloadUpperUpper" />
+  
+  <Target Name="DownloadUpperUpper">
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId)/$(PackageId).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <DownloadFromAzure AccountName="$(CloudDropAccountName)"
+                       AccountKey="$(CloudDropAccessToken)"
+                       ContainerName="$(ContainerName)"
+                       BlobNamePrefix="$(PackageId)/$(PackageId).$(PackageVersion)"
+                       BlobNameExtension="$(BlobNameExtension)"
+                       DownloadDirectory="$(DownloadDirectory)"
+                       DownloadFlatFiles="$(DownloadFlatFiles)" />
+  </Target>
+  
+  <Target Name="DownloadUpperLower">
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId)/$(PackageId.ToLower()).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <DownloadFromAzure AccountName="$(CloudDropAccountName)"
+                       AccountKey="$(CloudDropAccessToken)"
+                       ContainerName="$(ContainerName)"
+                       BlobNamePrefix="$(PackageId)/$(PackageId.ToLower()).$(PackageVersion)"
+                       BlobNameExtension="$(BlobNameExtension)"
+                       DownloadDirectory="$(DownloadDirectory)"
+                       DownloadFlatFiles="$(DownloadFlatFiles)" />
+  </Target>
+  
+  <Target Name="DownloadLowerUpper">
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId.ToLower())/$(PackageId).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <DownloadFromAzure AccountName="$(CloudDropAccountName)"
+                       AccountKey="$(CloudDropAccessToken)"
+                       ContainerName="$(ContainerName)"
+                       BlobNamePrefix="$(PackageId.ToLower())/$(PackageId).$(PackageVersion)"
+                       BlobNameExtension="$(BlobNameExtension)"
+                       DownloadDirectory="$(DownloadDirectory)"
+                       DownloadFlatFiles="$(DownloadFlatFiles)" />
+  </Target>
+  
+  <Target Name="DownloadLowerLower">
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId.ToLower())/$(PackageId.ToLower()).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <DownloadFromAzure AccountName="$(CloudDropAccountName)"
+                       AccountKey="$(CloudDropAccessToken)"
+                       ContainerName="$(ContainerName)"
+                       BlobNamePrefix="$(PackageId.ToLower())/$(PackageId.ToLower()).$(PackageVersion)"
+                       BlobNameExtension="$(BlobNameExtension)"
+                       DownloadDirectory="$(DownloadDirectory)"
+                       DownloadFlatFiles="$(DownloadFlatFiles)" />
+  </Target>
+</Project>
