@@ -5,6 +5,8 @@
   <Import Project="$(ToolsDir)SyncCloudContent.targets" />
   
   <UsingTask TaskName="ListAzureBlobs" AssemblyFile="$(BuildToolsTaskDir)Microsoft.DotNet.Build.CloudTestTasks.dll"/>
+  
+  <Target Name="Restore" />
 
   <Target Name="Build" DependsOnTargets="DownloadLowerLower;DownloadLowerUpper;DownloadUpperLower;DownloadUpperUpper" />
   
