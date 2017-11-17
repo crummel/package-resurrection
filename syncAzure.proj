@@ -9,44 +9,44 @@
   <Target Name="Build" DependsOnTargets="DownloadLowerLower;DownloadLowerUpper;DownloadUpperLower;DownloadUpperUpper" />
   
   <Target Name="DownloadUpperUpper">
-    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId)/$(PackageId).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageIdToRestore)/$(PackageIdToRestore).$(PackageVersionToRestore)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
     <DownloadFromAzure AccountName="$(CloudDropAccountName)"
                        AccountKey="$(CloudDropAccessToken)"
                        ContainerName="$(ContainerName)"
-                       BlobNamePrefix="$(PackageId)/$(PackageId).$(PackageVersion)"
+                       BlobNamePrefix="$(PackageIdToRestore)/$(PackageIdToRestore).$(PackageVersionToRestore)"
                        BlobNameExtension="$(BlobNameExtension)"
                        DownloadDirectory="$(DownloadDirectory)"
                        DownloadFlatFiles="$(DownloadFlatFiles)" />
   </Target>
   
   <Target Name="DownloadUpperLower">
-    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId)/$(PackageId.ToLower()).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageIdToRestore)/$(PackageIdToRestore.ToLower()).$(PackageVersionToRestore)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
     <DownloadFromAzure AccountName="$(CloudDropAccountName)"
                        AccountKey="$(CloudDropAccessToken)"
                        ContainerName="$(ContainerName)"
-                       BlobNamePrefix="$(PackageId)/$(PackageId.ToLower()).$(PackageVersion)"
+                       BlobNamePrefix="$(PackageIdToRestore)/$(PackageIdToRestore.ToLower()).$(PackageVersionToRestore)"
                        BlobNameExtension="$(BlobNameExtension)"
                        DownloadDirectory="$(DownloadDirectory)"
                        DownloadFlatFiles="$(DownloadFlatFiles)" />
   </Target>
   
   <Target Name="DownloadLowerUpper">
-    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId.ToLower())/$(PackageId).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageIdToRestore.ToLower())/$(PackageIdToRestore).$(PackageVersionToRestore)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
     <DownloadFromAzure AccountName="$(CloudDropAccountName)"
                        AccountKey="$(CloudDropAccessToken)"
                        ContainerName="$(ContainerName)"
-                       BlobNamePrefix="$(PackageId.ToLower())/$(PackageId).$(PackageVersion)"
+                       BlobNamePrefix="$(PackageIdToRestore.ToLower())/$(PackageIdToRestore).$(PackageVersionToRestore)"
                        BlobNameExtension="$(BlobNameExtension)"
                        DownloadDirectory="$(DownloadDirectory)"
                        DownloadFlatFiles="$(DownloadFlatFiles)" />
   </Target>
   
   <Target Name="DownloadLowerLower">
-    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageId.ToLower())/$(PackageId.ToLower()).$(PackageVersion)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
+    <Message Importance="High" Text="Downloading $(ContainerName)/$(PackageIdToRestore.ToLower())/$(PackageIdToRestore.ToLower()).$(PackageVersionToRestore)$(BlobNameExtension) from $(AccountName) to $(DownloadDirectory) (Flat=$(DownloadFlatFiles))" />
     <DownloadFromAzure AccountName="$(CloudDropAccountName)"
                        AccountKey="$(CloudDropAccessToken)"
                        ContainerName="$(ContainerName)"
-                       BlobNamePrefix="$(PackageId.ToLower())/$(PackageId.ToLower()).$(PackageVersion)"
+                       BlobNamePrefix="$(PackageIdToRestore.ToLower())/$(PackageIdToRestore.ToLower()).$(PackageVersionToRestore)"
                        BlobNameExtension="$(BlobNameExtension)"
                        DownloadDirectory="$(DownloadDirectory)"
                        DownloadFlatFiles="$(DownloadFlatFiles)" />
